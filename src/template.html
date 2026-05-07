@@ -4,11 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App</title>
+    <title>SkyGlass</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
-    <div id="app"></div>
+    <div class="container">
+        <header>
+            <div class="logo">SkyGlass</div>
+            <form action="#">
+                <input type="text" placeholder="Search city...">
+            </form>
+            <div class="temp-toggle">
+                <button class="toggle-btn toggle-btn--celsius" aria-pressed="true">°C</button>
+                <button class="toggle-btn toggle-btn--fahrenheit active" aria-pressed="false">°F</button>
+            </div>
+        </header>
+
+        <section aria-label="Current weather">
+            <div class="weather-icon"><span class="material-symbols-outlined">
+                    sunny
+                </span></div>
+            <h1 class="city">London</h1>
+            <h2 class="weather-description">Sunny</h2>
+            <data class="temperature" value="22">22°</data>
+            <div class="min-max-temperature-group">
+                <div >Min: <data class="min-temperate" value="8">8°</data></div>
+                <div >Max: <data class="max-temperate" value="26">26°</data></div>
+            </div>
+        </section>
+
+        <section aria-label="Weather details">
+            <ul class="weather-cards">
+                <li>
+                    <article class="weather-card weather-card--humidity">
+                        <div class="icon"><span class="material-symbols-outlined">
+                                humidity_low
+                            </span></div>
+                        <h3 class="card-title">Humidity</h3>
+                        <span class="card-value">45%</span>
+                    </article>
+                </li>
+                <li>
+                    <article class="weather-card weather-card--wind">
+                        <div class="icon"><span class="material-symbols-outlined">
+                                air
+                            </span></div>
+                        <h3 class="card-title">Wind Speed</h3>
+                        <span class="card-value">10 mph</span>
+                    </article>
+                </li>
+                <li>
+                    <article class="weather-card weather-card--feels-like">
+                        <div class="icon"><span class="material-symbols-outlined">
+                                thermostat
+                            </span></div>
+                        <h3 class="card-title">Feels Like</h3>
+                        <span class="card-value">20°</span>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </div>
+
 </body>
 
 </html>

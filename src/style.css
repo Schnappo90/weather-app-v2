@@ -1,0 +1,296 @@
+/* =============================================
+   Atmospheric Minimalist — Weather App Tokens
+   ============================================= */
+
+:root {
+
+  /* --- Colours: Base surfaces --- */
+  --color-surface:               #f9f9fc;
+  --color-surface-dim:           #dadadc;
+  --color-surface-bright:        #f9f9fc;
+  --color-surface-lowest:        #ffffff;
+  --color-surface-low:           #f3f3f6;
+  --color-surface-container:     #eeeef0;
+  --color-surface-high:          #e8e8ea;
+  --color-surface-highest:       #e2e2e5;
+
+  /* --- Colours: On-surface text --- */
+  --color-on-surface:            #1a1c1e;
+  --color-on-surface-variant:    #524535;
+  --color-inverse-surface:       #2f3133;
+  --color-inverse-on-surface:    #f0f0f3;
+
+  /* --- Colours: Outline --- */
+  --color-outline:               #847463;
+  --color-outline-variant:       #d6c3b0;
+
+  /* --- Colours: Primary (sunny/warm state) --- */
+  --color-primary:               #845400;
+  --color-on-primary:            #ffffff;
+  --color-primary-container:     #ffb347;
+  --color-on-primary-container:  #704700;
+  --color-inverse-primary:       #ffb95a;
+  --color-surface-tint:          #845400;
+  --color-primary-fixed:         #ffddb6;
+  --color-primary-fixed-dim:     #ffb95a;
+  --color-on-primary-fixed:      #2a1800;
+  --color-on-primary-fixed-var:  #643f00;
+
+  /* --- Colours: Secondary (rainy/cool state) --- */
+  --color-secondary:             #006782;
+  --color-on-secondary:          #ffffff;
+  --color-secondary-container:   #45cffd;
+  --color-on-secondary-container:#00566d;
+  --color-secondary-fixed:       #baeaff;
+  --color-secondary-fixed-dim:   #5dd4ff;
+  --color-on-secondary-fixed:    #001f29;
+  --color-on-secondary-fixed-var:#004d62;
+
+  /* --- Colours: Tertiary (overcast/night state) --- */
+  --color-tertiary:              #50606f;
+  --color-on-tertiary:           #ffffff;
+  --color-tertiary-container:    #b4c4d6;
+  --color-on-tertiary-container: #425160;
+  --color-tertiary-fixed:        #d4e4f6;
+  --color-tertiary-fixed-dim:    #b8c8da;
+  --color-on-tertiary-fixed:     #0d1d2a;
+  --color-on-tertiary-fixed-var: #394857;
+
+  /* --- Colours: Error --- */
+  --color-error:                 #ba1a1a;
+  --color-on-error:              #ffffff;
+  --color-error-container:       #ffdad6;
+  --color-on-error-container:    #93000a;
+
+  /* --- Typography --- */
+  --font-family:                 'Manrope', sans-serif;
+
+  --fs-display-temp:             120px;
+  --fw-display-temp:             200;
+  --lh-display-temp:             110px;
+  --ls-display-temp:             -0.04em;
+
+  --fs-headline-lg:              32px;
+  --fw-headline-lg:              600;
+  --lh-headline-lg:              40px;
+  --ls-headline-lg:              -0.02em;
+
+  --fs-headline-md:              24px;
+  --fw-headline-md:              500;
+  --lh-headline-md:              32px;
+
+  --fs-body-lg:                  18px;
+  --fw-body-lg:                  400;
+  --lh-body-lg:                  28px;
+
+  --fs-body-sm:                  14px;
+  --fw-body-sm:                  400;
+  --lh-body-sm:                  20px;
+
+  --fs-label-caps:               12px;
+  --fw-label-caps:               700;
+  --lh-label-caps:               16px;
+  --ls-label-caps:               0.08em;
+
+  /* --- Border radius --- */
+  --radius-sm:                   0.25rem;
+  --radius-md:                   0.5rem;
+  --radius-lg:                   1rem;
+  --radius-xl:                   1.5rem;
+  --radius-full:                 9999px;
+
+  /* --- Spacing --- */
+  --spacing-container:           2rem;
+  --spacing-stack-lg:            3rem;
+  --spacing-stack-md:            1.5rem;
+  --spacing-stack-sm:            0.75rem;
+  --spacing-grid-gutter:         1rem;
+
+  /* --- Glassmorphism --- */
+  --glass-bg:                    rgba(255, 255, 255, 0.12);
+  --glass-border:                rgba(255, 255, 255, 0.15);
+  --glass-blur:                  blur(24px);
+  --glass-blur-heavy:            blur(40px);
+
+  /* --- Weather state gradients --- */
+  --gradient-sunny:              linear-gradient(160deg, #ffb347 0%, #ff9a2e 60%, #e8793a 100%);
+  --gradient-rainy:              linear-gradient(160deg, #006782 0%, #0891b2 50%, #45cffd 100%);
+  --gradient-overcast:           linear-gradient(160deg, #50606f 0%, #708090 60%, #b4c4d6 100%);
+
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(160deg, #ffd49e 0%, #ffbc7a 60%, #f0a876 100%);
+  color: white;
+  font-family: "Manrope", sans-serif;
+  margin: 1rem;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+    fill: white;
+}
+
+.weather-icon svg {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 1rem;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+    border: none;
+    background: none;
+    font: inherit;
+    color: white;
+    padding-inline: 0.25rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.108);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.171);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.temp-toggle {
+    display: flex;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.251);
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+}
+
+.toggle-btn.active {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.586);
+    border-radius: 10px;
+}
+
+input {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+    color: white;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.514);
+}
+
+.weather-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.city {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.weather-description {
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.temperature {
+    font-size: 5rem;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+}
+
+.min-max-temperature-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 0.75rem;
+}
+
+.weather-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.108);
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.171);
+}
+
+.weather-card .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.card-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem
+}
+
+.card-value {
+    font-weight: 200;
+    font-size: 1.25rem;
+}

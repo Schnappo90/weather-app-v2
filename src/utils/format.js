@@ -1,6 +1,11 @@
+import { format, isToday } from 'date-fns';
+
 export function formatCityName(city) {
-  const address = city.split(',')[0];
-  return address[0].toUpperCase() + address.slice(1);
+  return city
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 }
 
 export function formatTemperature(temp) {
@@ -22,5 +27,19 @@ function convertToCelsius(value) {
 
 export function convertTemperature(isCelsius, temp) {
   //if bool (isCelsius) is true, convert to celsius else return the value;
-  return isCelsius ? convertToCelsius(temp) : formatTemperature(temp)
+  return isCelsius ? convertToCelsius(temp) : formatTemperature(temp);
+}
+
+export function formatDate(date) {
+  const parsedDate = Date.parse(date);
+  if (isToday(new Date(parsedDate))) {
+    return 'Today';
+  } else {
+    return format(new Date(parsedDate), 'EEE');
+  }
+}
+
+export function formatMainDate(date) {
+  const parsedDate = Date.parse(date);
+  return format(new Date(parsedDate), 'EEEE d LLLL yyyy');
 }

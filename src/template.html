@@ -2,78 +2,360 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>SkyGlass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap"
         rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">SkyGlass</div>
-            <form action="#">
-                <input type="text" placeholder="Search city...">
+    <div class="app">
+
+        <header class="header">
+
+            <h1 class="header__logo">Sky<span>Cast</span></h1>
+
+            <form class="search-form" action="#">
+                <label class="visually-hidden" for="city-search">
+                    Search city
+                </label>
+
+                <div class="input-group">
+                    <input id="city-search" class="search-form__input" type="text" placeholder="Search city" />
+                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                            width="24px" fill="#1f1f1f">
+                            <path
+                                d="M778-164 528-414q-30 26-69 40t-77 14q-92 0-156-64t-64-156q0-92 64-156t156-64q92 0 156 64t64 156q0 41-15 80t-39 66l250 250-20 20ZM382-388q81 0 136.5-55.5T574-580q0-81-55.5-136.5T382-772q-81 0-136.5 55.5T190-580q0 81 55.5 136.5T382-388Z" />
+                        </svg></button>
+                </div>
             </form>
-            <div class="temp-toggle">
-                <button class="toggle-btn toggle-btn--celsius" aria-pressed="true">°C</button>
-                <button class="toggle-btn toggle-btn--fahrenheit active" aria-pressed="false">°F</button>
+
+            <div class="temperature-toggle" role="group" aria-label="Temperature unit">
+                <button class="temperature-toggle__button toggle-celsius temperature-toggle__button--active" aria-pressed="true"
+                    type="button">
+                    °C
+                </button>
+
+                <button class="temperature-toggle__button" aria-pressed="false" type="button">
+                    °F
+                </button>
             </div>
+
         </header>
 
-        <section aria-label="Current weather">
-            <div class="weather-icon"><span class="material-symbols-outlined">
-                    sunny
-                </span></div>
-            <h1 class="city">London</h1>
-            <h2 class="weather-description">Sunny</h2>
-            <data class="temperature" value="22">22°</data>
-            <div class="min-max-temperature-group">
-                <div >Min: <data class="min-temperate" value="8">8°</data></div>
-                <div >Max: <data class="max-temperate" value="26">26°</data></div>
-            </div>
-        </section>
+        <main class="main-content">
 
-        <section aria-label="Weather details">
-            <ul class="weather-cards">
-                <li>
-                    <article class="weather-card weather-card--humidity">
-                        <div class="icon"><span class="material-symbols-outlined">
-                                humidity_low
-                            </span></div>
-                        <h3 class="card-title">Humidity</h3>
-                        <span class="card-value">45%</span>
+            <section class="current-weather" aria-labelledby="current-weather-heading">
+
+                <h2 id="current-weather-heading" class="visually-hidden">
+                    Current weather
+                </h2>
+
+                <p class="current-weather__city">
+                    London
+                </p>
+                <p class="current-weather__local-time">
+                    Friday 8 May 2026, 3:20pm
+                </p>
+
+                <div class="current-weather__summary">
+
+                    <div class="current-weather__icon">
+                        <span class="material-symbols-outlined" aria-hidden="true">
+                            <img src="./animated/cloudy-day-1.svg">
+                        </span>
+                    </div>
+
+                    <p class="current-weather__condition">
+                        Sunny
+                    </p>
+
+                </div>
+
+                <div class="current-weather__temperature-group">
+
+                    <data class="current-weather__temperature" value="22">
+                        22°
+                    </data>
+
+                    <dl class="temperature-range">
+
+                        <div class="temperature-range__item">
+                            <dt class="temperature-range__label">
+                                Low
+                            </dt>
+
+                            <dd class="temperature-range__value">
+                                <data class="temperature-range__value-min" value="8">8°</data>
+                            </dd>
+                        </div>
+
+                        <div class="temperature-range__item">
+                            <dt class="temperature-range__label">
+                                High
+                            </dt>
+
+                            <dd class="temperature-range__value">
+                                <data class="temperature-range__value-max" value="26">26°</data>
+                            </dd>
+                        </div>
+
+                    </dl>
+
+                </div>
+
+
+
+            </section>
+
+            <section class="weather-metrics" aria-labelledby="weather-metrics-heading">
+
+                <h2 id="weather-metrics-heading" class="visually-hidden">
+                    Weather details
+                </h2>
+
+                <ul class="weather-metrics__list">
+
+                    <li class="weather-metrics__item">
+
+                        <article class="metric-card metric-card--humidity">
+
+                            <div class="metric-card__icon">
+                                <span class="material-symbols-outlined" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M480-152q-111.39 0-189.69-76.71Q212-305.41 212-415.47 212-468 233.5-516t56.5-86l190-186 190 186q35 38 56.5 86.04Q748-467.92 748-415.28 748-305 669.69-228.5 591.39-152 480-152Zm170-96q70-68 70-167.23 0-47.11-18-89.71-18-42.6-52-74.67L480-748 310-579.61q-34 32.07-52 74.67t-18 89.71Q240-316 310-248q70 68 170 68t170-68Z" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <h3 class="metric-card__title">
+                                Humidity
+                            </h3>
+
+                            <p class="metric-card__value">
+                                45%
+                            </p>
+
+                        </article>
+
+                    </li>
+
+                    <li class="weather-metrics__item">
+
+                        <article class="metric-card metric-card--wind">
+
+                            <div class="metric-card__icon">
+                                <span class="material-symbols-outlined" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path d="M694-466H212v-28h482L460-728l20-20 268 268-268 268-20-20 234-234Z" />
+                                    </svg> </span>
+                            </div>
+
+                            <h3 class="metric-card__title">
+                                Wind Speed
+                            </h3>
+
+                            <p class="metric-card__value">
+                                10 mph
+                            </p>
+
+                        </article>
+
+                    </li>
+
+                    <li class="weather-metrics__item">
+
+                        <article class="metric-card metric-card--feels-like">
+
+                            <div class="metric-card__icon">
+                                <span class="material-symbols-outlined" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M375-175q-43-43-43-105 0-42 21.5-77t58.5-55v-348q0-29 19.5-48.5T480-828q29 0 48.5 19.5T548-760v348q37 20 58.5 55t21.5 77q0 62-43 105t-105 43q-62 0-105-43Zm65-325h80v-66h-40v-28h40v-92h-40v-28h40v-46q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v260Z" />
+                                    </svg> </span>
+                            </div>
+
+                            <h3 class="metric-card__title">
+                                Feels Like
+                            </h3>
+
+                            <p class="metric-card__value">
+                                20°
+                            </p>
+
+                        </article>
+
+                    </li>
+
+                    <li class="weather-metrics__item">
+
+                        <article class="metric-card metric-card--precipitation">
+
+                            <div class="metric-card__icon">
+                                <span class="material-symbols-outlined" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                        width="24px" fill="#1f1f1f">
+                                        <path
+                                            d="M186-508q-5 2-10.5.5T168-514L68-714q-2-5-.5-10.5T74-732q5-2 10.5-.5T92-726l100 200q2 5 .5 10.5T186-508Zm140 280q-5 3-10.5 1t-8.5-7l-80-160q-2-5 0-10.5t7-8.5q5-2 10.5 0t7.5 7l81 160q2 5 0 10t-7 8Zm82-200q-5 2-11 .5t-8-6.5L249-714q-2-5-.5-10.5t6.5-7.5q5-3 11-1t8 7l140 280q2 5 .5 10.5T408-428Zm86-200q-5 3-10.5 1.5T476-633l-40-81q-2-5-.5-11t6.5-8q5-2 11 0t8 7l40 80q2 5 0 10t-7 8Zm13 401q-6-2-8-7l-40-80q-2-5 0-11t7-8q5-2 10 0t8 7l41 79q2 5 0 10.5t-7 8.5q-5 3-11 1Zm197-1q-5 3-10.5 1t-7.5-7L546-514q-2-5-.5-10.5t6.5-8.5q5-2 11 0t8 7l140 279q2 5 0 10.5t-7 8.5Zm62-240q-5 3-10.5 1t-8.5-7L627-714q-2-5 0-11t7-8q5-2 10.5 0t7.5 7l120 240q2 5 .5 10.5T766-468Zm120 240q-5 3-10.5 1t-8.5-7l-60-120q-2-5 0-11t7-8q5-2 10.5 0t7.5 7l60 120q2 5 .5 10.5T886-228Z" />
+                                    </svg> </span>
+                            </div>
+
+                            <h3 class="metric-card__title">
+                                Precipitation
+                            </h3>
+
+                            <p class="metric-card__value">
+                                23%
+                            </p>
+
+                        </article>
+
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </main>
+
+        <section class="weather-forecast">
+            <ul class="weather-forecast-list">
+                <!-- <li>
+                    <article class="forecast-card">
+                        <div class="forecast-card__day">
+                            Today
+                        </div>
+                        <div class="forecast-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                                <path
+                                    d="M260-212q-70 0-119-49T92-380q0-66 47-117t115-51q10-86 74.5-143T480-748q95 0 161.5 66.5T708-520v52h32q54 0 91 37t37 91q0 54-37 91t-91 37H260Zm0-28h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z" />
+                            </svg>
+                        </div>
+                        <div class="forecast-card__high-temp">
+                            25°
+                        </div>
+                        <div class="forecast-card__low-temp">
+                            12°
+                        </div>
                     </article>
                 </li>
+
                 <li>
-                    <article class="weather-card weather-card--wind">
-                        <div class="icon"><span class="material-symbols-outlined">
-                                air
-                            </span></div>
-                        <h3 class="card-title">Wind Speed</h3>
-                        <span class="card-value">10 mph</span>
+                    <article class="forecast-card">
+                        <div class="forecast-card__day">
+                            Mon
+                        </div>
+                        <div class="forcast-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                                <path
+                                    d="M260-212q-70 0-119-49T92-380q0-66 47-117t115-51q10-86 74.5-143T480-748q95 0 161.5 66.5T708-520v52h32q54 0 91 37t37 91q0 54-37 91t-91 37H260Zm0-28h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z" />
+                            </svg>
+                        </div>
+                        <div class="forecast-card__high-temp">
+                            25°
+                        </div>
+                        <div class="forecast-card__low-temp">
+                            12°
+                        </div>
                     </article>
                 </li>
+
                 <li>
-                    <article class="weather-card weather-card--feels-like">
-                        <div class="icon"><span class="material-symbols-outlined">
-                                thermostat
-                            </span></div>
-                        <h3 class="card-title">Feels Like</h3>
-                        <span class="card-value">20°</span>
+                    <article class="forecast-card">
+                        <div class="forecast-card__day">
+                            Tue
+                        </div>
+                        <div class="forcast-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                                <path
+                                    d="M260-212q-70 0-119-49T92-380q0-66 47-117t115-51q10-86 74.5-143T480-748q95 0 161.5 66.5T708-520v52h32q54 0 91 37t37 91q0 54-37 91t-91 37H260Zm0-28h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z" />
+                            </svg>
+                        </div>
+                        <div class="forecast-card__high-temp">
+                            25°
+                        </div>
+                        <div class="forecast-card__low-temp">
+                            12°
+                        </div>
                     </article>
                 </li>
+
+                <li>
+                    <article class="forecast-card">
+                        <div class="forecast-card__day">
+                            Wed
+                        </div>
+                        <div class="forcast-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                                <path
+                                    d="M260-212q-70 0-119-49T92-380q0-66 47-117t115-51q10-86 74.5-143T480-748q95 0 161.5 66.5T708-520v52h32q54 0 91 37t37 91q0 54-37 91t-91 37H260Zm0-28h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z" />
+                            </svg>
+                        </div>
+                        <div class="forecast-card__high-temp">
+                            25°
+                        </div>
+                        <div class="forecast-card__low-temp">
+                            12°
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="forecast-card">
+                        <div class="forecast-card__day">
+                            Thu
+                        </div>
+                        <div class="forcast-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                                <path
+                                    d="M260-212q-70 0-119-49T92-380q0-66 47-117t115-51q10-86 74.5-143T480-748q95 0 161.5 66.5T708-520v52h32q54 0 91 37t37 91q0 54-37 91t-91 37H260Zm0-28h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z" />
+                            </svg>
+                        </div>
+                        <div class="forecast-card__high-temp">
+                            25°
+                        </div>
+                        <div class="forecast-card__low-temp">
+                            12°
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="forecast-card">
+                        <div class="forecast-card__day">
+                            Fri
+                        </div>
+                        <div class="forcast-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                                <path
+                                    d="M260-212q-70 0-119-49T92-380q0-66 47-117t115-51q10-86 74.5-143T480-748q95 0 161.5 66.5T708-520v52h32q54 0 91 37t37 91q0 54-37 91t-91 37H260Zm0-28h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z" />
+                            </svg>
+                        </div>
+                        <div class="forecast-card__high-temp">
+                            25°
+                        </div>
+                        <div class="forecast-card__low-temp">
+                            12°
+                        </div>
+                    </article>
+                </li> -->
             </ul>
         </section>
-    </div>
 
+    </div>
 </body>
 
 </html>

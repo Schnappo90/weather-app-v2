@@ -4,7 +4,7 @@ import {
   formatPercentage,
   convertTemperature,
 } from './utils/format.js';
-import { icons, animatedIcons } from './icons.js';
+import { animatedIcons, bg } from './icons.js';
 import { formatMainDate } from './utils/format.js';
 import { isToday } from 'date-fns';
 import { format } from 'date-fns';
@@ -13,7 +13,7 @@ import { format } from 'date-fns';
 const elements = {
   background: document.querySelector('.current-weather'),
   time: document.querySelector('.current-weather__local-time'),
-  weatherIcon: document.querySelector('.current-weather__icon'),
+  weatherIcon: document.querySelector('.current-weather__main-icon'),
   cityDisplay: document.querySelector('.current-weather__city'),
   weatherDescriptionDisplay: document.querySelector(
     '.current-weather__condition'
@@ -52,9 +52,10 @@ export const renderWeather = (
   },
   isCelsius
 ) => {
-    console.log(animatedIcons[conditions])
-  elements.weatherIcon.src = animatedIcons[conditions]
-//   elements.weatherIcon.src = animatedIcons[0];
+//   console.log("Current: ", conditions)
+  elements.weatherIcon.src = animatedIcons[conditions];
+  elements.background.style.backgroundImage = `url(${bg[conditions]})`
+//   console.log("HTML El: ", elements.weatherIcon)
   elements.cityDisplay.textContent = formatCityName(city);
   elements.currentTemperatureDisplay.textContent = convertTemperature(
     isCelsius,

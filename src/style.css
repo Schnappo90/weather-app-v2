@@ -264,7 +264,7 @@ header input {
         flex-direction: column;
         align-items: center;
         margin-block-end: var(--space-xl);
-        background-image: url("./images/clear.jpg");
+        background-image: url("./images/overcast.png");
         padding-block: var(--space-md);
         border-radius: var(--radius-md);
         color: white;
@@ -358,18 +358,25 @@ header input {
 /* ===== Weather Forecast ====== */
 
 .weather-forecast {
+    margin-block-end: var(--space-lg)
+}
+
+.weather-forecast,
+.weather-hourly-forecast {
     margin-block-start: var(--space-lg);
     width: 100%;
     background-color: var(--color-surface-tertiary);
     border-radius: var(--radius-md);
 }
 
-.weather-forecast-list {
+.weather-forecast-list,
+.weather-hourly-forecast-list {
     display: flex;
     overflow: scroll;
 }
 
-.weather-forecast-list li {
+.weather-forecast-list li,
+.weather-hourly-forecast-list li {
     cursor: pointer;
     padding: var(--space-md);
     transition: background-color 0.15s ease-in;
@@ -377,11 +384,13 @@ header input {
     
 }
 
-.weather-forecast-list li:nth-of-type(1) {
+.weather-forecast-list li:nth-of-type(1),
+.weather-hourly-forecast-list li:nth-of-type(1) {
     border-inline-start: none;
 }
 
-.weather-forecast-list li:hover {
+.weather-forecast-list li:hover,
+.weather-hourly-forecast-list li:hover {
     background-color: var(--color-surface-primary);
 }
 
@@ -394,9 +403,16 @@ header input {
 
 .forecast-card__day,
 .forecast-card__high-temp,
-.forecast-card__low-temp {
+.forecast-card__low-temp,
+.forecast-card__precipitation {
     font-size: var(--font-size-label-sm);
     text-transform: uppercase;
+}
+
+.forecast-card__precipitation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .forecast-card__high-temp {
@@ -413,9 +429,9 @@ header input {
 
 /* ICONS */
 
-svg.weather-icon {
-    height: 50px;
-    width: 50px;
+.current-weather__main-icon {
+    height: 75px;
+    width: 75px;
     display: flex;
     justify-content: center;
     align-items: center;

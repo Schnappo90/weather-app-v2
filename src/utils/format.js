@@ -43,3 +43,14 @@ export function formatMainDate(date) {
   const parsedDate = Date.parse(date);
   return format(new Date(parsedDate), 'EEEE d LLLL yyyy');
 }
+
+export function formatTime(datetimeEpoch) {
+  const date = new Date(datetimeEpoch * 1000);
+  const formatted = format(date, 'HH:mm');
+  return formatted;
+}
+
+export function getCurrentTimeStamp() {
+  const currDate = new Date();
+  return format(currDate, 'HH:mm');
+}

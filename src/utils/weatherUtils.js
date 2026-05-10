@@ -12,6 +12,7 @@ export const processWeatherData = (data) => {
     currentTemp: weatherData.temp,
     tempMax: weatherData.tempmax,
     tempMin: weatherData.tempmin,
+    timezone: weatherData.timezone,
     windSpeed: weatherData.windspeed,
  }
 }

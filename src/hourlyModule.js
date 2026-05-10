@@ -1,5 +1,5 @@
 import { convertTemperature, formatPercentage, formatTime, getCurrentTimeStamp } from "./utils/format.js";
-import { animatedIcons } from "./icons.js";
+import { icons } from "./icons.js";
 import { format } from "date-fns";
 
 export function renderHourlyForecast(isCelcius, {
@@ -14,6 +14,7 @@ export function renderHourlyForecast(isCelcius, {
     // const forecastList = document.querySelector(".forecast__list");
 
   // Create elements
+
   const listItem = document.createElement("li");
   listItem.dataset.hour = index;
 
@@ -30,7 +31,7 @@ export function renderHourlyForecast(isCelcius, {
 
   const iconElement = document.createElement("img");
   iconElement.classList.add("material-symbols-outlined");
-  iconElement.src = animatedIcons[conditions];
+  iconElement.src = icons[conditions];
 
 
   const highTempElement = document.createElement("div");
@@ -44,11 +45,21 @@ export function renderHourlyForecast(isCelcius, {
   // Build structure
   iconWrapper.append(iconElement);
 
+  //   if(index > 8) {
+  //   const fillLi = document.createElement("li")
+  //   fillLi.classList.add("last-list-item")
+  //   const p = document.createElement("p")
+  //   p.textContent = "See more weather for tomorrow"
+
+  //   fillLi.append(p);
+  //   listItem.append(fillLi);
+  // }
+
   article.append(
-    dayElement,
     iconWrapper,
-    highTempElement,
+    dayElement,
     precipEl,
+    highTempElement,
   );
 
   listItem.append(article);

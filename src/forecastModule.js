@@ -1,5 +1,5 @@
 import { convertTemperature, formatDate } from "./utils/format.js";
-import { animatedIcons } from "./icons.js"
+import { icons } from "./icons.js"
 
 export function renderForecast(isCelcius, {
     conditions,
@@ -26,7 +26,10 @@ export function renderForecast(isCelcius, {
 
   const iconElement = document.createElement("img");
   iconElement.classList.add("material-symbols-outlined");
-  iconElement.src = animatedIcons[conditions];
+  iconElement.src = icons[conditions];
+
+  const temperatureGroup = document.createElement('div');
+  temperatureGroup.classList.add("forecast-card__temperature-group")
 
   const highTempElement = document.createElement("div");
   highTempElement.classList.add("forecast-card__high-temp");
@@ -36,14 +39,15 @@ export function renderForecast(isCelcius, {
   lowTempElement.classList.add("forecast-card__low-temp");
   lowTempElement.textContent = `${convertTemperature(isCelcius, tempmin)}`;
 
+  temperatureGroup.append(highTempElement,lowTempElement)
+
   // Build structure
   iconWrapper.append(iconElement);
 
   article.append(
     dayElement,
     iconWrapper,
-    highTempElement,
-    lowTempElement
+    temperatureGroup,
   );
 
   listItem.append(article);

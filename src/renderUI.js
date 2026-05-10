@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 
 
 const elements = {
-  background: document.querySelector('.current-weather'),
+  section: document.querySelector('.current-weather'),
   time: document.querySelector('.current-weather__local-time'),
   weatherIcon: document.querySelector('.current-weather__main-icon'),
   cityDisplay: document.querySelector('.current-weather__city'),
@@ -52,21 +52,64 @@ export const renderWeather = (
   },
   isCelsius
 ) => {
-//   console.log("Current: ", conditions)
-  elements.weatherIcon.src = animatedIcons[conditions];
-  elements.background.style.backgroundImage = `url(${bg[conditions]})`
-//   console.log("HTML El: ", elements.weatherIcon)
-  elements.cityDisplay.textContent = formatCityName(city);
-  elements.currentTemperatureDisplay.textContent = convertTemperature(
-    isCelsius,
-    currentTemp
-  );
-  if (isToday(new Date(date))) {
-    elements.time.textContent = `${formatMainDate(date)}, ${format(Date.now(), 'K:m bbb')}`;
-  } else {
-    elements.time.textContent = formatMainDate(date);
-  }
-  elements.currentTemperatureDisplay.setAttribute('value', currentTemp);
+//   elements.weatherIcon.src = animatedIcons[conditions];
+//   elements.background.style.backgroundImage = `url(${bg[conditions]})`
+
+//   elements.cityDisplay.textContent = formatCityName(city);
+//   elements.currentTemperatureDisplay.textContent = convertTemperature(
+//     isCelsius,
+//     currentTemp
+//   );
+//   if (isToday(new Date(date))) {
+//     elements.time.textContent = `${formatMainDate(date)}, ${format(Date.now(), 'K:m bbb')}`;
+//   } else {
+//     elements.time.textContent = formatMainDate(date);
+//   }
+//   elements.currentTemperatureDisplay.setAttribute('value', currentTemp);
+
+elements.section.innerHTML = `
+    <div class="current-weather__display-left">
+      <h2 id="current-weather-heading" class="visually-hidden">Current weather</h2>
+      <p class="current-weather__city">${formatCityName(city)}</p>
+      <p class="current-weather__local-time">${formatMainDate(date)}</p>
+    </div>
+
+    <div class="current-weather__display-right">
+      <div class="current-weather__summary">
+        <div class="current-weather__icon">
+          <span class="material-symbols-outlined" aria-hidden="true">
+            <img class="current-weather__main-icon" src="${animatedIcons[conditions]}">
+          </span>
+        </div>
+        <p class="current-weather__condition">${conditions}</p>
+      </div>
+
+      <div class="current-weather__temperature-group">
+        <data class="current-weather__temperature" value="${currentTemp}">
+          ${convertTemperature(
+              isCelsius,
+              currentTemp
+            )}
+        </data>
+
+        <dl class="temperature-range">
+          <div class="temperature-range__item">
+            <dt class="temperature-range__label">Low</dt>
+            <dd class="temperature-range__value">
+              <data class="temperature-range__value-min" value="${tempMin}">${convertTemperature(isCelsius, tempMin)}</data>
+            </dd>
+          </div>
+          <div class="temperature-range__item">
+            <dt class="temperature-range__label">High</dt>
+            <dd class="temperature-range__value">
+              <data class="temperature-range__value-max" value="${tempMax}">${convertTemperature(isCelsius, tempMax)}</data>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  `;
+
   elements.humidityDisplay.textContent = formatPercentage(humidity);
   elements.windSpeedDisplay.textContent = formatMPH(windSpeed);
   elements.feelsLikeDisplay.textContent = convertTemperature(
@@ -74,10 +117,11 @@ export const renderWeather = (
     feelsLike
   );
   elements.precipitationDisplay.textContent = formatPercentage(precipProb);
-  elements.weatherDescriptionDisplay.textContent = conditions;
-  elements.minTempDisplay.textContent = convertTemperature(isCelsius, tempMin);
-  elements.minTempDisplay.setAttribute('value', tempMin);
+//   elements.weatherDescriptionDisplay.textContent = conditions;
+//   elements.minTempDisplay.textContent = convertTemperature(isCelsius, tempMin);
+//   elements.minTempDisplay.setAttribute('value', tempMin);
 
-  elements.maxTempDisplay.textContent = convertTemperature(isCelsius, tempMax);
-  elements.maxTempDisplay.setAttribute('value', tempMax);
+//   elements.maxTempDisplay.textContent = convertTemperature(isCelsius, tempMax);
+//   elements.maxTempDisplay.setAttribute('value', tempMax);
 };
+

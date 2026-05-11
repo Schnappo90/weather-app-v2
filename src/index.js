@@ -24,7 +24,6 @@ function removeSkeleton() {
   items.forEach((item) => {
     item.classList.remove('skeleton');
   });
-  console.log('Skeleton classes removed');
 }
 
 function addSkeleton() {
@@ -40,6 +39,31 @@ function addSkeleton() {
     <img class="spin" src="${loading}" alt="">
     <p>Loading</p>
   `;
+}
+
+function getGeolocation() {
+  return new Promise((resolve, reject) => {
+    if(!navigator.geolocation) {
+        reject(new Error("Geolocation is not supported by your browser"))
+    } else {
+        navigator.geolocation.getCurrentPosition(
+          (position) => resolve(position.coords),
+          (error) => reject(error)
+        );
+    }
+  });
+}
+
+async function getCityName() {
+    try {
+      const coords = await getGeolocation();
+      const url = `https://api-bdc.net/data/reverse-geocode-client?latitude=${coords.latitude}&longitude=${coords.longitude}`
+      
+      const res = await fetch(url);
+      const data = await res.json();
+    } catch (e){
+        console.log(e)
+    }
 }
 
 const getData = async (city) => {
@@ -88,31 +112,34 @@ form.addEventListener('submit', async (e) => {
     forecastSection.append(renderForecast(isCelsius, day, index));
   });
 
-console.log(currentWeatherData)
+  console.log("Current weather data: ", currentWeatherData);
 
-const startOfCurrentHour = new Date();
-startOfCurrentHour.setMinutes(0,0,0)
+  const startOfCurrentHour = new Date();
+  startOfCurrentHour.setMinutes(0, 0, 0);
 
   currentWeatherData.days[0].hours.forEach((hour, index) => {
     const hourDate = new Date(hour.datetimeEpoch * 1000);
 
-    if(isBefore(hourDate, startOfCurrentHour)) return;
-    hourlyForecastSection.append(renderHourlyForecast(isCelsius, hour, index))
+    if (isBefore(hourDate, startOfCurrentHour)) return;
+    hourlyForecastSection.append(renderHourlyForecast(isCelsius, hour, index));
     // console.log(currentWeatherData)
-  })
+  });
 
-  console.log(hourlyForecastSection.childElementCount)
-
-  if(hourlyForecastSection.childElementCount < 9) {
-    const p = document.createElement("p")
-    p.textContent = "See more weather for tomorrow";
+  if (hourlyForecastSection.childElementCount < 9) {
+    const p = document.createElement('p');
+    p.textContent = 'See more weather for tomorrow';
     p.classList.add('last-list-item');
 
-    hourlyForecastSection.append(p)
+    hourlyForecastSection.append(p);
   }
-
 });
 
+hourlyForecastSection.addEventListener('click', (e) => {
+  const target = e.target.closest('.last-list-item');
+  if (!target) return;
+  console.log(currentWeatherData.days[1]);
+  //Render tomorrow's data
+});
 // console.log(formatCityName("london"))
 
 // getData("London");
@@ -165,7 +192,7 @@ forecastList.addEventListener('click', (e) => {
     timezone: currentWeatherData.timezone,
   };
 
-  renderWeather(currentWeatherData, isCelsius);
+  renderWeather(selectedDay, isCelsius);
 
   //   console.log("test: ", selectedDay.hours)
 
